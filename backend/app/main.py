@@ -14,10 +14,11 @@ os.makedirs(UPLOADS_DIR, exist_ok=True)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("🚀 Starting Internet Packages API...")
-    await init_db()
+    try:
+        await init_db()
+    except Exception as e:
+        print(f"WARNING: Database init failed: {e}")
     yield
-    print("👋 Shutting down...")
 
 
 app = FastAPI(
