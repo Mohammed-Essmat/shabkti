@@ -1,3 +1,4 @@
+import certifi
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 from app.config import settings
@@ -8,10 +9,15 @@ from app.models.payment import Payment
 from app.models.otp import OTP
 
 async def init_db():
-    client = AsyncIOMotorClient(settings.MONGODB_URL)
+    client = AsyncIOMotorClient(
+        settings.MONGODB_URL,
+        tlsCAFile=certifi.where(),
+        serverSelectionTimeoutMS=10000,
+        connectTimeoutMS=10000,
+    )
     database = client.get_default_database()
     await init_beanie(
         database=database,
         document_models=[User, Package, Subscription, Payment, OTP]
     )
-    print("✅ Database initialized successfully")
+    print("Database initialized successfully")
