@@ -1,0 +1,33 @@
+# Environment & Secrets
+.env
+*.env.local
+
+# Claude
+.claude/
+CLAUDE_CODE_PROMPT.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Uploads
+backend/uploads/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Flutter
+flutter_app/build/
+flutter_app/.dart_tool/
+flutter_app/.flutter-plugins
+flutter_app/.flutter-plugins-dependencies
+flutter_app/.packages
+
+# OS
+.DS_Store
+Thumbs.db
