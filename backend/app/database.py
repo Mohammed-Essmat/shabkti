@@ -9,12 +9,14 @@ from app.models.payment import Payment
 from app.models.otp import OTP
 
 async def init_db():
-    client = AsyncIOMotorClient(
-        settings.MONGODB_URL,
-        tlsCAFile=certifi.where(),
-        serverSelectionTimeoutMS=10000,
-        connectTimeoutMS=10000,
-    )
+    params = {
+        "serverSelectionTimeoutMS": 10000,
+        "connectTimeoutMS": 10000,
+    }
+    if settings.MONGODB_URL.startswith("mongodb+srv"):
+        params["tlsCAFile"] = certifi.where()
+
+    client = AsyncIOMotorClient(settings.MONGODB_URL, **params)
     database = client.get_default_database()
     await init_beanie(
         database=database,

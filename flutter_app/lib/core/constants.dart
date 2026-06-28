@@ -2,11 +2,11 @@ class AppConstants {
   static const String appName = 'Shabakti';
   static const String appNameAr = 'شبكتي';
   static const String apiBaseUrl = 'http://10.0.2.2:8000'; // Android emulator
-  static const String apiBaseUrlDevice = 'http://192.168.1.5:8000'; // physical device
-  static const String apiBaseUrlProd = 'https://shabkti-api-553721465865.me-central1.run.app'; // production
+  static const String apiBaseUrlDevice = 'http://192.168.1.6:8000'; // physical device
+  static const String apiBaseUrlProd = 'https://motocross-reliance-patience.ngrok-free.dev'; // ngrok
 
   static String get baseUrl {
-    return apiBaseUrlProd;
+    return apiBaseUrlDevice;
   }
 
   static const String vodafoneCashNumber = '01234567890';
